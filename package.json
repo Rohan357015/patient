@@ -1,0 +1,19 @@
+{
+  "name": "patient-appointment-system",
+  "version": "1.0.0",
+  "description": "A MERN stack patient booking system with Zustand and Chakra UI",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm run dev --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install-all": "npm install && npm install --prefix backend && npm install --prefix client"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
