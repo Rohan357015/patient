@@ -6,14 +6,24 @@ const connectDB = require('./config/db');
 // Load environment variables
 dotenv.config();
 
-// Connect to Database
-connectDB();
-
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Database Connection Middleware (Serverless-optimized)
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    res.status(500).json({
+      message: 'Database connection failed. Please ensure MONGO_URI is configured correctly in Vercel environment variables.',
+      error: error.message
+    });
+  }
+});
 
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
