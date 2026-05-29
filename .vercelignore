@@ -1,0 +1,6 @@
+# Exclude all local node_modules from Vercel deployment, preventing Windows/Linux package collisions
+node_modules
+backend/node_modules
+client/node_modules
+dist
+.vercel
